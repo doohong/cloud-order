@@ -26,7 +26,9 @@ dependencies {
   implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
   implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
   developmentOnly("org.springframework.boot:spring-boot-devtools")
-  // h2
+  // mariadb
+  implementation("org.mariadb.jdbc:mariadb-java-client:2.7.2")
+  // h2.
   runtimeOnly ("com.h2database:h2:1.3.176")
   //mapper
   api("org.modelmapper:modelmapper:2.3.8")
