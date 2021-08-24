@@ -26,6 +26,8 @@ dependencies {
   implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
   implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
   developmentOnly("org.springframework.boot:spring-boot-devtools")
+  // kafka
+  implementation("org.springframework.kafka:spring-kafka")
   // mariadb
   implementation("org.mariadb.jdbc:mariadb-java-client:2.7.2")
   // h2.

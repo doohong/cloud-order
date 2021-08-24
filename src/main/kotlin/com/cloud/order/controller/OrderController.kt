@@ -1,6 +1,7 @@
 package com.cloud.order.controller
 
 import com.cloud.order.dto.OrderDto
+import com.cloud.order.messageque.KafkaProducer
 import com.cloud.order.service.OrderService
 import com.cloud.order.vo.RequestOrder
 import com.cloud.order.vo.ResponseOrder
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*
 class OrderController(
     private val env: Environment,
     private val orderService: OrderService,
+    private val kafkaProducer: KafkaProducer,
 ) {
     @GetMapping("/health_check")
     fun status(): String {
@@ -47,6 +49,7 @@ class OrderController(
         val responseOrderDto = orderService.createOrder(orderDto)
         val responseOrder = mapper.map(responseOrderDto, ResponseOrder::class.java)
 
+        kafkaProducer.send("example-category-topic", orderDto)
         return ResponseEntity.status(HttpStatus.CREATED).body(responseOrder)
     }
 }
